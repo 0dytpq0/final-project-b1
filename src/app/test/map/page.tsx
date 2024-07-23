@@ -1,7 +1,5 @@
 "use client";
-import { GoogleMap, LoadScript } from "@react-google-maps/api";
-
-const MapAPI = process.env.MAPS_API_KEY;
+import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
 
 const containerStyle = {
   width: "100%",
@@ -14,10 +12,16 @@ const center = {
 };
 
 function TestMapPage() {
+  const apiKey = process.env.NEXT_PUBLIC_MAPS_API_KEY;
+
+  if (!apiKey) {
+    return <div>API Key가 설정되지 않았습니다.</div>;
+  }
+
   return (
-    <LoadScript googleMapsApiKey="AIzaSyBWFF2ahRd3PsebRLbum80bXE6Hh3-1d4A">
+    <LoadScript googleMapsApiKey={apiKey}>
       <GoogleMap mapContainerStyle={containerStyle} center={center} zoom={14}>
-        <></>
+        <Marker position={center} />
       </GoogleMap>
     </LoadScript>
   );
