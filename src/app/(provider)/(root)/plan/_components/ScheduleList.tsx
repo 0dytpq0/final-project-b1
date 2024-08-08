@@ -1,5 +1,6 @@
 "use client";
 
+import { PlanChildType } from "@/types/plan";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import BottomSheet from "./BottomSheet";
@@ -26,9 +27,7 @@ function ScheduleList({
   const [data, setData] = useState<any[]>([]);
   const [isBottomSheetOpen, setIsBottomSheetOpen] = useState(false);
   const [selectedItem, setSelectedItem] = useState<any>(null);
-  const [type, setType] = useState<"customePlace" | "place" | "move" | "memo">(
-    "place"
-  ); // Default type
+  const [type, setType] = useState<PlanChildType>("place");
   const [status, setStatus] = useState<"add" | "read" | "update">("read");
 
   useEffect(() => {
@@ -160,17 +159,7 @@ function ScheduleList({
                       <h3 className="text-base font-bold">{item.data.title}</h3>
                     </div>
                     <button
-                      onClick={() =>
-                        openBottomSheet(
-                          item,
-                          item.type as
-                            | "customePlace"
-                            | "place"
-                            | "move"
-                            | "memo",
-                          "read"
-                        )
-                      }
+                      onClick={() => openBottomSheet(item, item.type, "read")}
                     >
                       read바텀시트
                     </button>
@@ -215,7 +204,10 @@ function ScheduleList({
             //   transportIcons[item.data.type as TransportType];
             return (
               <li key={item.id} className="flex flex-col w-full">
-                <div className="flex items-center w-full h-10 rounded-l-3xl rounded-r-lg bg-[#3F3F3F]">
+                <div
+                  className="flex items-center w-full h-10 rounded-l-3xl rounded-r-lg bg-[#3F3F3F]"
+                  onClick={() => openBottomSheet(item, item.type, "read")}
+                >
                   <div className="w-[9%] mr-[3%] flex items-center justify-center">
                     <div className="w-7 h-7 bg-[#E8F97B] ml-1 text-white rounded-full flex items-center justify-center">
                       {/* <TransportIcon className="w-4 h-4" /> */}
@@ -258,6 +250,11 @@ function ScheduleList({
                 <div className="w-[87%] min-h-44">
                   <div className="w-full flex items-center justify-between mb-2">
                     <h3 className="text-base font-bold">{item.data.title}</h3>
+                    <button
+                      onClick={() => openBottomSheet(item, item.type, "read")}
+                    >
+                      read바텀시트
+                    </button>
                   </div>
                   <div className="w-full min-h-20 h-auto py-2 px-4 bg-white text-sm shadow-schecule-list rounded-lg">
                     <div className="flex items-center h-full">
