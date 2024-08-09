@@ -60,6 +60,9 @@ class MoveScheduleManager extends PlanChild<Tables<"moveSchedule">> {
 
 export function getTableManager(supabase: SupabaseClient, type: PlanChildType) {
   switch (type) {
+    case "memo": return new MemoManager(supabase);
+    case "move": return new MoveScheduleManager(supabase);
+    default: return null;
     case "customPlace":
       return new ScheduleManager(supabase);
     default:
