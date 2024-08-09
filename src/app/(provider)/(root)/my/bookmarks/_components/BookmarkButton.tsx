@@ -9,7 +9,9 @@ type BookmarkButtonProps = {
 };
 
 function BookmarkButton({ areaId }: BookmarkButtonProps) {
-  const { isBookmarked, addBookmark, deleteBookmark } = useBookmarks(areaId);
+  const { isBookmarked, addBookmark, deleteBookmark } = useBookmarks({
+    areaId: areaId,
+  });
 
   return (
     <>
