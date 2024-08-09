@@ -186,8 +186,8 @@ function BottomSheet({
             isDisabled={status === "read"}
             value={formData.spend}
           />
-        )} */}
-        {(type === "place" || type === "customePlace") && (
+        )}
+        {(type === "place" || type === "customPlace") && (
           <BottomSheetInput
             type="place"
             isDisabled={status === "read"}

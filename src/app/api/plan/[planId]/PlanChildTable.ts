@@ -3,7 +3,7 @@ import { Tables } from "@/types/supabase";
 import { SupabaseClient } from "@supabase/supabase-js";
 
 interface DataManager<T> {
-  insert: (data: T) => Promise<T | null>
+  insert: (data: T) => Promise<T | null>;
 }
 
 export class PlanChild<T> implements DataManager<T> {
@@ -11,9 +11,19 @@ export class PlanChild<T> implements DataManager<T> {
   protected tableName: string;
 
   constructor(supabase: SupabaseClient, tableName: string) {
-    this.client = supabase
+    this.client = supabase;
     this.tableName = tableName;
   }
+}
+
+class ScheduleManager
+  extends PlanChild
+  implements DataManager<Tables<"schedule">>
+{
+  constructor(supabase: SupabaseClient) {
+    super(supabase, "schedule");
+  }
+
 
   async insert(info: T): Promise<T | null> {
     const { data, error } = await this.client
@@ -50,9 +60,12 @@ class MoveScheduleManager extends PlanChild<Tables<"moveSchedule">> {
 
 export function getTableManager(supabase: SupabaseClient, type: PlanChildType) {
   switch (type) {
-    case "customePlace": return new ScheduleManager(supabase);
     case "memo": return new MemoManager(supabase);
     case "move": return new MoveScheduleManager(supabase);
     default: return null;
+    case "customPlace":
+      return new ScheduleManager(supabase);
+    default:
+      return null;
   }
 }

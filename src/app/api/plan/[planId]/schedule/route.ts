@@ -191,9 +191,7 @@ export async function GET(request: NextRequest, { params: { planId } }: GetParam
 
     // Schedule 데이터
     const scheduleIds = orderListForDay
-      .filter(
-        (entry) => entry.type === "customePlace" || entry.type === "place"
-      )
+      .filter((entry) => entry.type === "customPlace" || entry.type === "place")
       .map((entry) => entry.id);
     const { data: scheduleData = [] } = await supabase
       .from(TABLE_NAME)
@@ -232,7 +230,7 @@ export async function GET(request: NextRequest, { params: { planId } }: GetParam
 
     // 결과 데이터 결합
     const resultData = orderListForDay.map((entry) => {
-      if (entry.type === "customePlace" || entry.type === "place") {
+      if (entry.type === "customPlace" || entry.type === "place") {
         const data = scheduleData?.find((d) => d.id === entry.id) as
           | SupabaseScheduleType
           | undefined;
