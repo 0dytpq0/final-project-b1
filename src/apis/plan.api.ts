@@ -31,6 +31,17 @@ export default class PlanAPI {
   async updatePlan(planId: string, type: PlanChildType, data: PlanChildData): Promise<Plan | null> {
     return await this.axios
       .put(`/api/plan/${planId}`, { ...data, type })
+
+      .then(({ data }) => data)
+      .catch((e) => {
+        console.error(e);
+        return null;
+      });
+  }
+
+  async delete(planId: string): Promise<Plan | null> {
+    return await this.axios
+      .delete(`/api/plan/${planId}`)
       .then(({ data }) => data)
       .catch((e) => {
         console.error(e);
