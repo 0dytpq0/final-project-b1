@@ -107,6 +107,7 @@ function BottomSheet({
       });
     data.images = images;
 
+    data.images = images;
     return data;
   };
 
@@ -145,6 +146,10 @@ function BottomSheet({
     } finally {
       handleClose();
     }
+  };
+
+  const handleAddImage = (url: string) => {
+    setImages((prev) => [...prev, url]);
   };
 
   const handleAddImage = (url: string) => {
