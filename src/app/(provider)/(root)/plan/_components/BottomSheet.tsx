@@ -147,11 +147,6 @@ function BottomSheet({
       handleClose();
     }
   };
-
-  const handleAddImage = (url: string) => {
-    setImages((prev) => [...prev, url]);
-  };
-
   const handleAddImage = (url: string) => {
     setImages((prev) => [...prev, url]);
   };
