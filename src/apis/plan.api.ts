@@ -59,16 +59,6 @@ export default class PlanAPI {
       });
   }
 
-  async delete(planId: string): Promise<Plan | null> {
-    return await this.axios
-      .delete(`/api/plan/${planId}`)
-      .then(({ data }) => data)
-      .catch((e) => {
-        console.error(e);
-        return null;
-      });
-  }
-
   async addPlan(
     planId: string,
     newData: Record<string, any>
