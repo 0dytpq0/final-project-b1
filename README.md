@@ -2,7 +2,7 @@
 
 |                  이효현                  |                 박요셉                 |                     임현석                     |                    박초원                    |                      이준혁                       | 김인우 |
 | :--------------------------------------: | :------------------------------------: | :--------------------------------------------: | :------------------------------------------: | :-----------------------------------------------: | :----: |
-| [@reeny404](https://github.com/reeny404) | [@0dytpq0](https://github.com/0dytpq0) | [@hyeonseok98](https://github.com/hyeonseok98) | [@parkchowon](https://github.com/parkchowon) | [@LeeJunhyeok369](https://github.com/BLAKE198492) |        |
+| [@reeny404](https://github.com/reeny404) | [@0dytpq0](https://github.com/0dytpq0) | [@hyeonseok98](https://github.com/hyeonseok98) | [@parkchowon](https://github.com/parkchowon) | [@LeeJunhyeok369](https://github.com/LeeJunhyeok369) |        |
 |                 TL / FE                  |                   FE                   |                       FE                       |                      FE                      |                        FE                         |   DS   |
 
 <br>
